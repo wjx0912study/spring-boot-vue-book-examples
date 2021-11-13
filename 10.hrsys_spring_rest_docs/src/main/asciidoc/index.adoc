@@ -1,0 +1,11 @@
+= EmployeeController测试文档
+
+.request
+include::{snippets}/search/http-request.adoc[]
+.response
+include::{snippets}/search/http-response.adoc[]
+
+.request
+include::{snippets}/add/http-request.adoc[]
+.response
+include::{snippets}/add/http-response.adoc[]

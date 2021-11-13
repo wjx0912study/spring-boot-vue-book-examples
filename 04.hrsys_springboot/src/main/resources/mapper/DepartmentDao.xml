@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC   
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.alan.hrsys.dao.DepartmentDao">
+	<select id="search" resultType="com.alan.hrsys.entity.Department">
+		select * from department
+	</select>
+	<select id="searchById" resultType="com.alan.hrsys.entity.Department">
+		select * from department where
+		id=#{id}
+	</select>
+
+	<insert id="add">
+		insert into department
+		(number,name)values(#{number},#{name})
+	</insert>
+	<update id="update">
+		update department set number=#{number},
+		name=#{name}  where id=#{id}
+	</update>
+	<delete id="delete">
+		delete from department where id=#{id}
+	</delete>
+</mapper>

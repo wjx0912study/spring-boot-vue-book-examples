@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>权限页面</title>
+    <link rel="stylesheet"
+          th:href="@{'/bootstrap/css/bootstrap.min.css'}"/>
+    <style>
+        #container {
+            width: 600px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div id="container">
+    <h2>无权访问</h2>
+    <h3 class="font-bold">您没有权限访问这个页面</h3>
+
+    <div class="error-desc">
+       请联系管理员...
+        <br/>或者以对应身份访问
+        <br/><a href="/index" class="btn btn-primary m-t">登录</a>
+    </div>
+</div>
+</body>
+</html>
+
+

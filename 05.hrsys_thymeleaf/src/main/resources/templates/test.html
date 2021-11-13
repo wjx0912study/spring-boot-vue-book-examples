@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<th:block  th:insert="common"></th:block>
+
+    <style th:inline="css">
+        .[[${className}]]
+        {
+            color: red
+        }
+        .active {
+            color: red;
+        }
+
+    </style>
+    <script th:inline="javascript">
+        var name = [[${emp.name}]];
+        alert(name);
+    </script>
+</head>
+<body>
+<!--转发视图-->
+Hello World!
+<!--th:text指令-->
+<div th:text="你好"></div>
+<div th:text="${msg}"></div>
+<div th:utext="${msg}"></div>
+
+<!--表达式-->
+<div>
+    <p th:text="${emp.name}"></p>
+    <p th:text="${emp.gender}"></p>
+    <p th:text="${emp.age}"></p>
+</div>
+<div th:object="${emp}">
+    <p th:text="*{name}"></p>
+    <p th:text="*{gender}"></p>
+    <p th:text="*{age}"></p>
+</div>
+<!--表达式运算-->
+<div th:text="${'小明，'+msg}"></div>
+<div th:text="'小明，'+${msg}"></div>
+
+<div th:text="${emp.name+' '+ emp.gender}"></div>
+<div th:text="${emp.name}+' '+${emp.gender}"></div>
+
+<div th:text="${emp.age > 20}"></div>
+<div th:text="${emp.age} > 20"></div>
+
+<div th:text="${emp.gender}=='男'?'男':'女'"></div>
+<div th:text="${emp.gender}?:'男'"></div>
+
+
+
+<!--选择分支-->
+<div th:if="${emp.gender=='男'}" th:text="这个员工是男性">
+</div>
+<div th:unless="${emp.gender=='男'}" th:text="这个员工是女性">
+</div>
+<div th:switch="${emp.gender}">
+    <p th:case="男">这个员工是男性</p>
+    <p th:case="女">这个员工是女性</p>
+    <p th:case="">这个员工的性别在系统中尚未定义</p>
+</div>
+<!--循环集合-->
+<table>
+    <tr th:each="emp:${list}">
+        <td th:text="${emp.name}"></td>
+        <td th:text="${emp.gender}"></td>
+        <td th:text="${emp.age}"></td>
+    </tr>
+</table>
+<!--循环集合2-->
+<table>
+    <tr th:each="emp,status:${list}">
+        <td th:text="${status.index}"></td>
+        <td th:text="${emp.name}"></td>
+        <td th:text="${emp.gender}"></td>
+        <td th:text="${emp.age}"></td>
+    </tr>
+</table>
+<!--有限次循环-->
+<ul>
+    <li th:each="number:${#numbers.sequence(1,10)}" th:text="${number}"></li>
+</ul>
+
+
+<!--attr-->
+<div th:text="${emp.name}" th:attr="data-id=${emp.id}">
+</div>
+
+<div th:text="${emp.name}" th:data-id="${emp.id}">
+</div>
+<!--value-->
+<input type="text" th:value="${emp.name}"/>
+
+<!--class-->
+<div th:text="${emp.name}" th:class="active">
+</div>
+
+<!--style-->
+<div th:text="${emp.name}" th:style="'color:blue'">
+</div>
+<div th:text="${emp.name}" th:style="'color:'+(${emp.gender}=='女'?'blue':'red')">
+</div>
+
+<input type="radio" th:checked="${emp.gender}=='男'"/>男
+<input type="radio" th:checked="${emp.gender}=='女'"/>女
+
+<input type="radio" th:attr="checked=(${emp.gender}=='男'?true:false)"/>男
+<input type="radio" th:attr="checked=(${emp.gender}=='女'?true:false)"/>女
+
+
+<select>
+    <option th:selected="${emp.gender}=='男'">男</option>
+    <option th:selected="${emp.gender}=='女'">女</option>
+</select>
+
+
+<div th:text="${#strings.substring(emp.name,0,1)}">
+
+</div>
+<div th:text="${#session.getAttribute('role')}">
+</div>
+<div th:inline="text">
+    [[${emp.name}]]
+</div>
+<div th:text="${#dates.format(time,'YYYY-MM-dd hh:mm:ss')}">
+</div>
+<a th:href="@{/index}">点击</a>
+<a href="/index">点击</a>
+
+
+<a th:href="@{/index(userId=1)}">点击</a>
+<a href="/index?userId=1">点击</a>
+
+<a th:href="@{/add(name=tom,age=20)}">点击</a>
+<a href="/add?name=tom&age=20">点击</a>
+
+</body>
+</html>

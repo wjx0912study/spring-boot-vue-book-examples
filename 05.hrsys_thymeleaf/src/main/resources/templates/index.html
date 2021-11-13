@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>后台管理页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #top, #bottom {
+            clear: both;
+            height: 80px;
+            background: #337ab7;
+            height: 80px;
+        }
+
+        #top #logo {
+            color: #fff;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 15px 0 0 40px;
+        }
+
+        #main {
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #left {
+            width: 240px;
+            float: left;
+            height: 460px;
+            padding-left: 20px;
+        }
+
+        #right {
+            width: 800px;
+            float: left;
+            height: 460px;
+        }
+
+
+        .yi {
+            width: 160px;
+            height: 40px;
+            background: #337ab7;
+            color: #fff;
+            margin-top: 5px;
+            border-radius: 3px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .er {
+            list-style: none;
+            width: 160px;
+        }
+
+        .er li {
+            margin-top: 2px;
+            text-align: center;
+            background: #337aae;
+            color: #fff;
+            height: 30px;
+            line-height: 30px;
+            font-size: 14px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript">
+        $().ready(function () {
+            $(".yi").click(function () {
+                $(this).next().slideToggle(500);
+            })
+        })
+    </script>
+</head>
+<body>
+<div id="container">
+    <div id="top">
+        <div id="logo">Alan人事管理系统</div>
+    </div>
+    <div id="main">
+        <div id="left">
+            <div class="yi">员工管理</div>
+            <ul class="er">
+                <li><a href="emp/search" target="right">员工管理</a></li>
+                <li><a href="emp/showAdd" target="right">员工添加</a></li>
+            </ul>
+            <div class="yi">部门管理</div>
+            <ul class="er">
+                <li><a href="dep/search" target="right">部门管理</a></li>
+                <li><a href="dep/showAdd" target="right">部门添加</a></li>
+            </ul>
+            <div class="yi">权限管理</div>
+            <ul class="er">
+                <li><a href="" target="right">用户管理</a></li>
+                <li><a href="" target="right">角色管理</a></li>
+                <li><a href="" target="right">权限管理</a></li>
+            </ul>
+        </div>
+        <iframe id="right" name="right" scrolling="no" frameborder="0"
+                src="emp/search"></iframe>
+    </div>
+    <div id="bottom">
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+server:
+  port: 8090
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/hrsys1?serverTimezone=UTC&characterEncoding=UTF-8
+    hikari:
+      minimum-idle: 8
+      maximum-pool-size: 20
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1800000
+      connection-timeout: 3000000
+      connection-test-query: select 1
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
